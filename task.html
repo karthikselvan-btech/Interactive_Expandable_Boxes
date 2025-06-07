@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOGO Offer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #fff;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+    }
+    .title {
+      text-align: center;
+      color: #ff5d91;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .box:hover {
+      box-shadow: 0 0 10px rgba(255, 93, 145, 0.2);
+    }
+    .box.active {
+      background: #ffeaf0;
+    }
+    .badge {
+      background: #ff5d91;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .most-popular {
+      position: absolute;
+      right: -5px;
+      top: -10px;
+      background: #ff5d91;
+      color: white;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .details {
+      display: none;
+      margin-top: 10px;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .box.active .details {
+      display: block;
+    }
+    select {
+      margin: 5px 10px 10px 0;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .price {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    .add-to-cart {
+      display: block;
+      width: 100%;
+      background: #ff5d91;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .add-to-cart:hover {
+      background: #e14d7e;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scaleY(0.95); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">YAY! It’s BOGO</div>
+
+    <div class="box" onclick="selectBox(this)">
+      <div>
+        <input type="radio" name="unit" /> 1 Unit <span class="badge">10% Off</span>
+        <div class="price">$10.00 USD <s style="color:#999; font-weight: normal;">$24.00 USD</s></div>
+      </div>
+      <div class="details">
+        <select><option>Size</option><option>S</option><option>M</option><option>L</option></select>
+        <select><option>Color</option><option>Black</option><option>White</option><option>Pink</option></select>
+      </div>
+    </div>
+
+    <div class="box" onclick="selectBox(this)">
+      <div>
+        <input type="radio" name="unit" /> 2 Unit <span class="badge">20% Off</span>
+        <div class="most-popular">MOST POPULAR</div>
+        <div class="price">$18.00 USD <s style="color:#999; font-weight: normal;">$24.00 USD</s></div>
+      </div>
+      <div class="details">
+        <div>#1
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Pink</option></select>
+        </div>
+        <div>#2
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Pink</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" onclick="selectBox(this)">
+      <div>
+        <input type="radio" name="unit" /> 3 Unit <span class="badge">30% Off</span>
+        <div class="price">$24.00 USD <s style="color:#999; font-weight: normal;">$36.00 USD</s></div>
+      </div>
+      <div class="details">
+        <div>#1
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Pink</option></select>
+        </div>
+        <div>#2
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Pink</option></select>
+        </div>
+        <div>#3
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>White</option><option>Pink</option></select>
+        </div>
+      </div>
+    </div>
+
+    <button class="add-to-cart">+ Add to Cart</button>
+  </div>
+
+  <script>
+    function selectBox(box) {
+      const allBoxes = document.querySelectorAll('.box');
+      allBoxes.forEach(b => b.classList.remove('active'));
+      box.classList.add('active');
+
+      const radios = document.querySelectorAll("input[type='radio']");
+      radios.forEach(r => r.checked = false);
+      box.querySelector("input[type='radio']").checked = true;
+    }
+  </script>
+</body>
+</html>
